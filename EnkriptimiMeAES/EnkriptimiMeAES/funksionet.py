@@ -16,7 +16,7 @@ def valido_modin(mod,list):
     if mod in list:
        return 1
     else:
-       print("Zgjedhje invalide, ju lutem zgjedheni modin ECB, CBC, CFB, CTR apo OFB")
+       print("Zgjedhje invalide, ju lutem zgjedheni modin ECB, CBC")
        return 0
 
 def valido_key_size_user(celesi,chosen_key_size):
@@ -25,19 +25,7 @@ def valido_key_size_user(celesi,chosen_key_size):
     else:
          return False
 
-def valido_tipin(tipi,list):
-    if tipi in list:
-       return 1
-    else:
-       print("Zgjedhje invalide, ju lutem zgjedheni ENKRIPTIMIN(E) apo DEKRIPTIMIN(D)")
-       return 0
 
-def valido_zgjedhjen(zgjedhja,list):
-    if zgjedhja in list:
-       return 1
-    else:
-       print("Zgjedhje invalide, ju lutem zgjedheni TEKST (T) apo FAJLL (F)")
-       return 0
 
 def key(choice):
     if(choice == 128):
@@ -127,14 +115,6 @@ def DekriptimiMeCBC(ciphertext,celesi,IV):#PADDED
     decrypted_padded_str = ''.join(str(e) for e in decrypted_1)
 
     return decrypted_padded_str
-
-def SegmentSizeMultiple(plaintext, segment_size):
-    while(len(plaintext) % int(segment_size) != 0): #na vyn per te modi CFB
-        plaintext += "x"
-
-    return plaintext
-
-
 
 def rezultati(celesi, plaintext, ciphertext, decrypted):
     print("Enkriptimi mbaroi me sukses.")

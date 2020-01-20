@@ -21,20 +21,11 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="DekriptimiMeAES.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="EnkriptimiMeAES.py" />
     <Compile Include="funksionet.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="module1.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="module2.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="module3.py">
+    <Compile Include=".py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
