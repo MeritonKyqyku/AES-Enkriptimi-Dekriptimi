@@ -19,13 +19,6 @@ def valido_modin(mod,list):
        print("Zgjedhje invalide, ju lutem zgjedheni modin ECB, CBC")
        return 0
 
-def valido_key_size_user(celesi,chosen_key_size):
-    if(len(celesi) == int(int(chosen_key_size)/8)):
-         return True
-    else:
-         return False
-
-
 
 def key(choice):
     if(choice == 128):
@@ -38,8 +31,6 @@ def key(choice):
 def padding(plaintext):
     while(len(plaintext) % 16 != 0):
          plaintext += "x"
-
-    
     s = re.findall('.{1,16}', plaintext)
     return s
 def unpadded(unpadded_plaintext,padded_plaintext):
@@ -63,7 +54,7 @@ def EnkriptimiMeECB(plaintext,celesi): #Per arsye se blloqet ne ECB duhet te jen
     ciphertext_str = ''.join(str(e) for e in ciphertext_original) #ciphertextin e kthejme ne string
 
     if(decrypted == plaintext):
-        return ciphertext_str.encode("utf-8"), decrypted #ta-daaaa, e kem qa
+        return ciphertext_str.encode("utf-8"), decrypted 
     else:
         return;
 
@@ -128,17 +119,11 @@ def rezultati(celesi, plaintext, ciphertext, decrypted):
 def save_it_1b(ciphertext,celesi,chosen_mod,length,Emri):
     
 
-    year = now.year
-    month = now.month
-    day = now.day
-    hour = now.hour
-    minute = now.minute
-    second = now.second
-    microsecond = now.microsecond
+    
     data =  Emri
-    path_ciphertext = r'C:\Users\Meriton Kycyku\Desktop\EnkriptimiMeAES\Encrypted_Plaintext\C' + data + "[" + str(chosen_mod) + "]" +".txt"
-    path_key = r'C:\Users\Meriton Kycyku\Desktop\EnkriptimiMeAES\Encrypted_Plaintext\K' + data + "[" + str(chosen_mod) + "]" +".txt"
-    path_length = r'C:\Users\Meriton Kycyku\Desktop\EnkriptimiMeAES\Encrypted_Plaintext\P' + data + "[" + str(chosen_mod) + "]" +".txt"
+    path_ciphertext = r'C:\Users\Meriton Kycyku\Desktop\EnkriptimiMeAES\Encrypted_Plaintext\C' + data +".txt"
+    path_key = r'C:\Users\Meriton Kycyku\Desktop\EnkriptimiMeAES\Encrypted_Plaintext\K' + data +".txt"
+    path_length = r'C:\Users\Meriton Kycyku\Desktop\EnkriptimiMeAES\Encrypted_Plaintext\P' + data +".txt"
     with open(path_ciphertext, "wb") as fc:
         fc.write(ciphertext)
         fc.close()
@@ -146,9 +131,9 @@ def save_it_1b(ciphertext,celesi,chosen_mod,length,Emri):
         fk.write(celesi)
         fk.close()
     with open(path_length, "wb") as fl:
-        fl.write(length)
-        fl.close()
-    if(os.path.exists(path_ciphertext) and os.path.exists(path_key) and os.path.exists(path_length)):
+       fl.write(length)
+       fl.close()
+    if(os.path.exists(path_ciphertext) and os.path.exists(path_key)):
         print("\nRuajtja ishte e sukseshme")
     else:
         print("\nRuajtja deshtoi")
@@ -157,18 +142,12 @@ def save_it_1b(ciphertext,celesi,chosen_mod,length,Emri):
 def save_it_2b(ciphertext,celesi, IV,chosen_mod,length,Emri):
     
 
-    year = now.year
-    month = now.month
-    day = now.day
-    hour = now.hour
-    minute = now.minute
-    second = now.second
-    microsecond = now.microsecond
+   
     data =Emri
-    path_ciphertext = r'C:\Users\Meriton Kycyku\Desktop\EnkriptimiMeAES\Encrypted_Plaintext\C' + data + "[" + str(chosen_mod) + "]" +".txt"
-    path_key = r'C:\Users\Meriton Kycyku\Desktop\EnkriptimiMeAES\Encrypted_Plaintext\K' + data + "[" + str(chosen_mod) + "]" +".txt"
-    path_iv = r'C:\Users\Meriton Kycyku\Desktop\EnkriptimiMeAES\Encrypted_Plaintext\V' + data +  "[" + str(chosen_mod) + "]" +".txt"
-    path_length = r'C:\Users\Meriton Kycyku\Desktop\EnkriptimiMeAES\Encrypted_Plaintext\l' + data + "[" + str(chosen_mod) + "]" +".txt"
+    path_ciphertext = r'C:\Users\Meriton Kycyku\Desktop\EnkriptimiMeAES\Encrypted_Plaintext\C' + data + ".txt"
+    path_key = r'C:\Users\Meriton Kycyku\Desktop\EnkriptimiMeAES\Encrypted_Plaintext\K' + data +".txt"
+    path_iv = r'C:\Users\Meriton Kycyku\Desktop\EnkriptimiMeAES\Encrypted_Plaintext\V' + data + ".txt"
+    path_length = r'C:\Users\Meriton Kycyku\Desktop\EnkriptimiMeAES\Encrypted_Plaintext\L' + data + ".txt"
     with open(path_ciphertext, "wb") as fc:
         fc.write(ciphertext)
         fc.close()
@@ -182,7 +161,7 @@ def save_it_2b(ciphertext,celesi, IV,chosen_mod,length,Emri):
         fl.write(length)
         fl.close()
 
-    if(os.path.exists(path_ciphertext) and os.path.exists(path_key) and os.path.exists(path_iv) and os.path.exists(path_length)):
+    if(os.path.exists(path_ciphertext) and os.path.exists(path_key) and os.path.exists(path_iv)):
         print("\nRuajtja ishte e sukseshme")
     else:
         print("\nRuajtja deshtoi")
@@ -190,5 +169,6 @@ def save_it_2b(ciphertext,celesi, IV,chosen_mod,length,Emri):
 
 
 
-def unpadded_for_decrypted(decrypted,plaintext_length):
+def unpadded_for_decrypted(decrypted,plaintext):
+
     return decrypted[:plaintext_length]

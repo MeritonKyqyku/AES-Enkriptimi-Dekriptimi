@@ -7,12 +7,10 @@ from funksionet import *
 
 #vm - valido modin
 #vk - valido celesin random
-#vkuc - valido celesin e zgjedhur nga useri
+
 
 key_list = ["128","192","256"] #madhesite e celesave ne AES
 mod_list = ["ECB","CBC"] #Modet e enkriptimit
-choice_celesi_list = ["R","U"]
-vkuc = True #nese useri ka zgjedh celes  random, vkuc gjith rri true
 print("                                       ------------------------------------")
 print("                                       |  AES Enkriptuesi dhe Dekriptuesi |")
 print("                                       ------------------------------------\n")
@@ -42,7 +40,7 @@ if ((lloji=="e")or( lloji=="E")):
                      IV = Random.get_random_bytes(16)
 
                      
-                     if(mod == "ECB" and vkuc): #Electronic Code Book
+                     if(mod == "ECB" ): #Electronic Code Book
                           plaintext = input("Plaintexti:")
                           length = bytes(str(len(plaintext)),"utf-8")
                           ciphertext,decrypted = EnkriptimiMeECB(plaintext,celesi)
@@ -63,7 +61,7 @@ if ((lloji=="e")or( lloji=="E")):
                      
                      
     
-                     elif(mod == "CBC" and vkuc): #Cipher Block Chain
+                     elif(mod == "CBC" ): #Cipher Block Chain
                          plaintext = input("Plaintexti:")
                          length = bytes(str(len(plaintext)),"utf-8")
                          ciphertext,decrypted = EnkriptimiMeCBC(plaintext,celesi,IV)
@@ -120,7 +118,7 @@ elif((lloji=="d")or(lloji=="D")):
                                  fl = open(l_file_path,"rb")
                                  l = fl.read()
                                  l = int(l) #l na duhet per arsye te hjekjes se shkronjave qe i kemi bere pad ekstra
-                                 print("Plaintexti i dekriptuar:" + unpadded_for_decrypted(decrypted,l))
+                                 print("Plaintexti i dekriptuar:" + unpadded_for_decrypted(decrypted))
                             elif(mod == "CBC"):
                                 IV_file_name = input("Jepni emrin e fajllit qe permban Vektorin Inicializues:\n\t")
                                 IV_file_path = r'C:\Users\Meriton Kycyku\Desktop\EnkriptimiMeAES\Encrypted_Plaintext\\' + IV_file_name + ".txt"
